@@ -3,6 +3,7 @@ import multer, { diskStorage } from 'multer';
 import { v4 as uuidv4 } from 'uuid';
 
 const uploadFolder = resolve('public', 'uploads');
+console.log(uploadFolder);
 
 const storage = diskStorage({
   destination: (req, file, cb) => cb(null, uploadFolder),
@@ -22,6 +23,7 @@ const isPicture = ({ mimetype }) => {
 const fileFilter = (req, file, cb) => {
   if (!isPicture(file)) {
     req.fileValidationError = 'Only images please';
+    cb(null, false);
   }
   cb(null, true);
 };
