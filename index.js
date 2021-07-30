@@ -1,11 +1,10 @@
 import express from 'express';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import multer from 'multer';
+import upload from './utils/imageUpload.js';
 
 const app = express();
 const port = process.env.PORT || 5000;
-const upload = multer({ dest: './public/uploads/' });
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
