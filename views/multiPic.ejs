@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Your files</title>
+    <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css" />
+  </head>
+  <body class="container">
+    <div class="row justify-content-center">
+      <% files.forEach(({filename}) => {%>
+      <div class="col-md-6">
+        <div class="row justify-content-center">
+          <img src="/uploads/<%=filename%>" alt="Your upload" class="img-fluid" />
+        </div>
+      </div>
+      <%}) %>
+    </div>
+  </body>
+</html>

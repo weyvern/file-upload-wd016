@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>File upload: Single</title>
+    <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form method="POST" action="/upload-profile-pic" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="profile_pic">Select your profile picture:</label>
+          <input type="file" name="profile_pic" class="form-control" />
+        </div>
+        <input type="submit" value="Upload" class="btn-primary" />
+      </form>
+    </div>
+  </body>
+</html>

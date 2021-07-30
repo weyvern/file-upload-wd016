@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>File upload: Multiple</title>
+    <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form method="POST" action="/upload-cat-pics" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="cat_pics">Select your cat pictures:</label>
+          <input type="file" name="cat_pics" class="form-control" multiple />
+        </div>
+        <input type="submit" value="Upload" class="btn-primary" />
+      </form>
+    </div>
+  </body>
+</html>
