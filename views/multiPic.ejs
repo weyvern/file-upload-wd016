@@ -7,10 +7,10 @@
   </head>
   <body class="container">
     <div class="row justify-content-center">
-      <% files.forEach(({filename}) => {%>
+      <% insertedPics.forEach(({path, name}) => {%>
       <div class="col-md-6">
         <div class="row justify-content-center">
-          <img src="/uploads/<%=filename%>" alt="Your upload" class="img-fluid" />
+          <img src="<%=path %>/<%=name%>" alt="Your upload" class="img-fluid" />
         </div>
       </div>
       <%}) %>

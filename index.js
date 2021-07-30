@@ -1,7 +1,11 @@
+import 'dotenv/config.js';
 import express from 'express';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import upload from './utils/imageUpload.js';
+import multerValidate from './middlewares/multerValidate.js';
+import insertIntoDatabase from './middlewares/insertIntoDatabase.js';
+import { getImages, renderMulti, renderSingle } from './controllers/images.js';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -16,16 +20,22 @@ app.get('/', (req, res) => res.render('index'));
 app.get('/single-form', (req, res) => res.render('singleForm'));
 app.get('/multi-form', (req, res) => res.render('multiForm'));
 
-app.post('/upload-profile-pic', upload.single('profile_pic'), (req, res) => {
-  const {
-    file: { path, filename }
-  } = req;
-  res.render('singlePic', { path, filename });
-});
+app.get('/images', getImages);
 
-app.post('/upload-cat-pics', upload.array('cat_pics'), (req, res) => {
-  const { files } = req;
-  res.render('multiPic', { files });
-});
+app.post(
+  '/upload-profile-pic',
+  upload.single('profile_pic'),
+  multerValidate,
+  insertIntoDatabase,
+  renderSingle
+);
+
+app.post(
+  '/upload-cat-pics',
+  upload.array('cat_pics'),
+  multerValidate,
+  insertIntoDatabase,
+  renderMulti
+);
 
 app.listen(port, console.log(`Server running on port ${port}`));

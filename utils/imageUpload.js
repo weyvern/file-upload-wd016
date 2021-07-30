@@ -22,7 +22,6 @@ const isPicture = ({ mimetype }) => {
 const fileFilter = (req, file, cb) => {
   if (!isPicture(file)) {
     req.fileValidationError = 'Only images please';
-    return cb(new Error('Only images please'));
   }
   cb(null, true);
 };
